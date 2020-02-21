@@ -1,2 +1,49 @@
 ---
 # defaults file for debian9-CIS
+
+# Enable Section 1 configurations
+debian9cis_rule_1_1_1_1: true
+debian9cis_rule_1_1_1_2: true
+debian9cis_rule_1_1_1_3: true
+debian9cis_rule_1_1_1_4: true
+debian9cis_rule_1_1_1_5: true
+debian9cis_rule_1_1_2: true
+debian9cis_rule_1_1_3: true
+debian9cis_rule_1_1_4: true
+debian9cis_rule_1_1_5: true
+debian9cis_rule_1_1_6: true
+debian9cis_rule_1_1_7: true
+debian9cis_rule_1_1_8: true
+debian9cis_rule_1_1_9: true
+debian9cis_rule_1_1_10: true
+debian9cis_rule_1_1_11: true
+debian9cis_rule_1_1_12: true
+debian9cis_rule_1_1_13: true
+debian9cis_rule_1_1_14: true
+debian9cis_rule_1_1_15: true
+debian9cis_rule_1_1_16: true
+debian9cis_rule_1_1_17: true
+debian9cis_rule_1_1_18: true
+debian9cis_rule_1_1_19: true
+debian9cis_rule_1_1_20: true
+debian9cis_rule_1_1_21: true
+debian9cis_rule_1_1_22: true
+debian9cis_rule_1_2_1: true
+debian9cis_rule_1_2_2: true
+debian9cis_rule_1_3_1: true
+debian9cis_rule_1_3_2: true
+debian9cis_rule_1_4_1: true
+debian9cis_rule_1_4_2: true # 1.4.2-3 ned to be implemented
+debian9cis_rule_1_4_3: true
+debian9cis_rule_1_5_1: true
+debian9cis_rule_1_5_2: true # not scored | not implemented
+debian9cis_rule_1_5_3: true
+debian9cis_rule_1_5_4: true
+
+# Anything not marked as true needs to be reviewed
+
+debian9cis_vartmp:
+  source: /tmp
+  fstype: false
+  opts: "defaults,nodev,nosuid,noexec,bind"
+  enabled: false

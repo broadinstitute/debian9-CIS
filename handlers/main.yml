@@ -1,2 +1,6 @@
 ---
 # handlers file for debian9-CIS
+
+- name: update_grub
+  become: true
+  command: update-grub
