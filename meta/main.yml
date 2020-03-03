@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: debian9-CIS 
   author: Sarada Symonds
   description: Role for configuring a Debian 9 VM image to CIS benchmarking standards.
   company: Broad Institute

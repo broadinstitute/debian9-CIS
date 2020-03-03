@@ -1,6 +1,30 @@
 ---
 # defaults file for debian9-CIS
 
+debian9cis_skip_for_docker: true
+debian9cis_skip_for_travis: true
+debian9cis_chroot: true
+debian9cis_raspbian: false
+
+debian9cis_config_aide: true
+# AIDE cron settings
+debian9cis_aide_cron:
+  cron_user: root
+  cron_file: /etc/crontab
+  aide_job: '/usr/bin/aide.wrapper --check'
+  aide_minute: 0
+  aide_hour: 5
+  aide_day: '*'
+  aide_month: '*'
+  aide_weekday: '*'
+
+debian9cis_allow_autofs: false
+debian9cis_ignore_remount_errors: false
+
+prelim_tasks: true
+debian9cis_section_1: false
+debian9cis_section_2: true
+
 # Enable Section 1 configurations
 debian9cis_rule_1_1_1_1: true
 debian9cis_rule_1_1_1_2: true
@@ -39,11 +63,56 @@ debian9cis_rule_1_5_1: true
 debian9cis_rule_1_5_2: true # not scored | not implemented
 debian9cis_rule_1_5_3: true
 debian9cis_rule_1_5_4: true
+debian9cis_rule_1_6_1_1: true
+debian9cis_rule_1_6_1_2: true
+debian9cis_rule_1_6_1_3: true
+debian9cis_rule_1_6_1_4: true # may want to direct audit output to file, needs fail_on_remediation_actions to be true to fail
+debian9cis_rule_1_6_2_1: true
+debian9cis_rule_1_6_2_2: true
+debian9cis_rule_1_6_3: true
+debian9cis_rule_1_7_1_1: true
+debian9cis_rule_1_7_1_1_audit: false # may want ot send output to file
+debian9cis_rule_1_7_1_2: true
+debian9cis_rule_1_7_1_2_audit: false # may want ot send output to file
+debian9cis_rule_1_7_1_3: true
+debian9cis_rule_1_7_1_3_audit: false # may want ot send output to file
+debian9cis_rule_1_7_1_4: true
+debian9cis_rule_1_7_1_5: true
+debian9cis_rule_1_7_1_6: true
+debian9cis_rule_1_7_2: true
+debian9cis_rule_1_8: true
 
+debian9cis_rule_2_1_1: true
+debian9cis_rule_2_1_2: true
 # Anything not marked as true needs to be reviewed
+
+fail_on_manual_remediation_actions: true
+
+debian9cis_gui: false
+
+# Warning Banner Content (issue, issue.net, motd)
+debian9cis_warning_banner_motd: |
+  Authorized use only. All activity may be monitored and reported.
+# End banner
+
+# Warning Banner Content (issue, issue.net, motd)
+debian9cis_warning_banner_issue: |
+  Authorized use only. All activity may be monitored and reported.
+# End banner
+
+# Warning Banner Content (issue, issue.net, motd)
+debian9cis_warning_banner_issue_net: |
+  Authorized use only. All activity may be monitored and reported.
+# End banner
+
+# Warning Banner Content (issue, issue.net, motd)
+debian9cis_warning_banner_gdm: |
+  Authorized use only. All activity may be monitored and reported.
+# End banner
 
 debian9cis_vartmp:
   source: /tmp
   fstype: false
   opts: "defaults,nodev,nosuid,noexec,bind"
   enabled: false
+

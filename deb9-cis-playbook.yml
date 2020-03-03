@@ -1,7 +1,0 @@
-- name: Harden Server
-  hosts: localhost
-  become: yes
-
-  roles:
-    - Debian9-CIS
-#    - { role: Debian9-CIS, ignore_errors: yes }

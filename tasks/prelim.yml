@@ -1,12 +1,13 @@
 # TODO: You can check value of registers by running with -v
 
 - name: "PRELIM | Check for autofs service"
-  shell: systemctl is-enabled autofs
+  shell: "systemctl is-enabled autofs"
   args:
       executable: /bin/bash
   register: autofs_service_status
   changed_when: false
   check_mode: false
+  when: not debian9cis_skip_for_docker
 
 - name: "PRELIM | Check if prelink package is installed"
   command: dpkg -s prelink
@@ -16,3 +17,14 @@
   check_mode: false
   tags:
     - skip_ansible_lint
+
+# TODO: apparmor and selinux, maybe switch to package manager ansible_facts
+
+- name: "PRELIM | Check if gdm3 is installed"
+  command: dpkg -s gdm3
+  register: gdm_installed
+  changed_when: false
+  failed_when: false
+  check_mode: false
+  tags:
+    - gui

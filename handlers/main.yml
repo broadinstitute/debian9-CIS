@@ -1,6 +1,30 @@
 ---
 # handlers file for debian9-CIS
-
 - name: update_grub
   become: true
   command: update-grub
+
+- name: systemd restart tmp.mount
+  become: true
+  systemd:
+      name: tmp.mount
+      daemon_reload: true
+      enabled: true
+      masked: false
+      state: reloaded
+  when:
+    - ansible_virtualization_type != "docker"
+    - not debian9cis_chroot
+  ignore_errors: "{{ debian9cis_ignore_remount_errors }}"
+
+- name: systemd restart var-tmp.mount
+  become: true
+  systemd:
+      name: var-tmp.mount
+      daemon_reload: true
+      enabled: true
+      masked: false
+      state: reloaded
+  when:
+    - not debian9cis_chroot
+  ignore_errors: "{{ debian9cis_ignore_remount_errors }}"

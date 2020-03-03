@@ -1,0 +1,27 @@
+---
+- name: "SCORED | 2.1.1 | PATCH | Ensure xinetd is not installed"
+  apt:
+    name:
+      - xinetd
+    state: absent
+    purge: true
+  when:
+    - debian9cis_rule_2_1_1
+  tags:
+    - level1
+    - scored
+    - patch
+    - rule_2.1.1
+
+- name: "SCORED | 2.1.2 | PATCH | Ensure openbsd-inetd is not installed"
+  apt:
+    name:
+      - openbsd-inetd
+    state: absent
+  when:
+    - debian9cis_rule_2_1_2
+  tags:
+    - level1
+    - scored
+    - patch
+    - rule_2.1.2
