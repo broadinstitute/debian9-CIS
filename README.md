@@ -3,6 +3,8 @@ Role Name
 
 A brief description of the role goes here.
 
+Testing git config
+
 Requirements
 ------------
 
