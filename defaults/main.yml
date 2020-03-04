@@ -22,7 +22,7 @@ debian9cis_allow_autofs: false
 debian9cis_ignore_remount_errors: false
 
 prelim_tasks: true
-debian9cis_section_1: false
+debian9cis_section_1: true
 debian9cis_section_2: true
 
 # Enable Section 1 configurations
@@ -84,11 +84,81 @@ debian9cis_rule_1_8: true
 
 debian9cis_rule_2_1_1: true
 debian9cis_rule_2_1_2: true
+debian9cis_rule_2_2_1_1: true
+debian9cis_rule_2_2_1_2: true
+debian9cis_rule_2_2_1_3: true
+debian9cis_rule_2_2_2: true
+debian9cis_rule_2_2_3: true
+debian9cis_rule_2_2_4: true
+debian9cis_rule_2_2_5: true
+debian9cis_rule_2_2_6: true
+debian9cis_rule_2_2_7: true
+debian9cis_rule_2_2_8: true
+debian9cis_rule_2_2_9: true
+debian9cis_rule_2_2_10: true
+debian9cis_rule_2_2_11: true
+debian9cis_rule_2_2_12: true
+debian9cis_rule_2_2_13: true
+debian9cis_rule_2_2_14: true
+debian9cis_rule_2_2_15: true
+debian9cis_rule_2_2_16: true
+debian9cis_rule_2_2_17: true
+debian9cis_rule_2_3_1: true
+debian9cis_rule_2_3_2: true
+debian9cis_rule_2_3_3: true
+debian9cis_rule_2_3_4: true
+debian9cis_rule_2_3_5: true
 # Anything not marked as true needs to be reviewed
+
+
 
 fail_on_manual_remediation_actions: true
 
 debian9cis_gui: false
+
+debian9cis_time_synchronization: chrony
+# debian9cis_time_synchronization: ntp
+
+debian9cis_avahi_server: false
+debian9cis_cups_server: false
+debian9cis_dhcp_server: false
+debian9cis_ldap_server: false
+debian9cis_telnet_server: false
+debian9cis_nfs_server: false
+debian9cis_rpc_server: false
+debian9cis_ntalk_server: false
+debian9cis_rsyncd_server: false
+debian9cis_tftp_server: false
+debian9cis_rsh_server: false
+debian9cis_nis_server: false
+debian9cis_snmp_server: false
+debian9cis_squid_server: false
+debian9cis_smb_server: false
+debian9cis_dovecot_server: false
+debian9cis_httpd_server: false
+debian9cis_vsftpd_server: false
+debian9cis_named_server: false
+debian9cis_nfs_rpc_server: false
+debian9cis_is_mail_server: false
+debian9cis_bind: false
+debian9cis_vsftpd: false
+debian9cis_httpd: false
+debian9cis_dovecot: false
+debian9cis_samba: false
+debian9cis_squid: false
+debian9cis_net_snmp: false
+debian9cis_allow_autofs: false
+
+
+debian9cis_time_synchronization_servers:
+  - uri: "0.pool.ntp.org"
+    config: "minpoll 8"
+  - uri: "1.pool.ntp.org"
+    config: "minpoll 8"
+  - uri: "2.pool.ntp.org"
+    config: "minpoll 8"
+  - uri: "3.pool.ntp.org"
+    config: "minpoll 8"
 
 # Warning Banner Content (issue, issue.net, motd)
 debian9cis_warning_banner_motd: |

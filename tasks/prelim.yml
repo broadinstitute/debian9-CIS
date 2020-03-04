@@ -28,3 +28,6 @@
   check_mode: false
   tags:
     - gui
+
+- name: "PRELIM | Populate Service faces"
+  service_facts:
