@@ -22,8 +22,9 @@ debian9cis_allow_autofs: false
 debian9cis_ignore_remount_errors: false
 
 prelim_tasks: true
-debian9cis_section_1: true
-debian9cis_section_2: true
+debian9cis_section_1: false
+debian9cis_section_2: false
+debian9cis_section_3: true
 
 # Enable Section 1 configurations
 debian9cis_rule_1_1_1_1: true
@@ -108,9 +109,57 @@ debian9cis_rule_2_3_2: true
 debian9cis_rule_2_3_3: true
 debian9cis_rule_2_3_4: true
 debian9cis_rule_2_3_5: true
+
+debian9cis_rule_3_1_1: true
+debian9cis_rule_3_1_2: true
+debian9cis_rule_3_2_1: true
+debian9cis_rule_3_2_2: true
+debian9cis_rule_3_2_3: true
+debian9cis_rule_3_2_4: true
+debian9cis_rule_3_2_5: true
+debian9cis_rule_3_2_6: true
+debian9cis_rule_3_2_7: true
+debian9cis_rule_3_2_8: true
+debian9cis_rule_3_2_9: true
+
+debian9cis_rule_3_3_1: true
+debian9cis_rule_3_3_2: true
+debian9cis_rule_3_3_3: true
+debian9cis_rule_3_3_4: true
+debian9cis_rule_3_3_5: true
+debian9cis_rule_3_4_1: true
+debian9cis_rule_3_4_2: true
+debian9cis_rule_3_4_3: true
+debian9cis_rule_3_4_4: true
+
+debian9cis_rule_3_5_1_1: true
+debian9cis_rule_3_5_1_2: true
+debian9cis_rule_3_5_1_3: true
+debian9cis_rule_3_5_1_4: true
+debian9cis_rule_3_5_2_1: true
+debian9cis_rule_3_5_2_2: true
+debian9cis_rule_3_5_2_3: true
+debian9cis_rule_3_5_2_4: true
+debian9cis_rule_3_5_3: true
+debian9cis_rule_3_6: true
+debian9cis_rule_3_7: true
+
+debian9cis_setup_firewall: false
+disable_wireless: false
 # Anything not marked as true needs to be reviewed
 
+debian9cis_hosts_allow:
+  - "10.0.0.0/255.0.0.0"
+  - "172.16.0.0/255.240.0.0"
+  - "192.168.0.0/255.255.0.0"
+  - "0.0.0.0/0.0.0.0"
 
+debian9cis_hosts_deny:
+  - ""
+
+netstat_install: true
+
+modprobe_conf_file: dccp.conf
 
 fail_on_manual_remediation_actions: true
 

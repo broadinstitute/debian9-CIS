@@ -28,3 +28,9 @@
   when:
     - not debian9cis_chroot
   ignore_errors: "{{ debian9cis_ignore_remount_errors }}"
+
+- name: persist iptables
+  shell: iptables-save > /etc/iptables/rules.v4
+
+- name: persist ip6tables
+  shell: ip6tables-save > /etc/iptables/rules.v6

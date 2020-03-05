@@ -29,5 +29,16 @@
   tags:
     - gui
 
-- name: "PRELIM | Populate Service faces"
+- name: "PRELIM | Populate Service facts"
   service_facts:
+
+- name: "PRELIM | Install netstat"
+  apt:
+    name:
+      - net-tools
+    state: present
+  when:
+    - netstat_install
+
+- name: "PRELIM | Populate open port faces"
+  listen_ports_facts:
