@@ -42,3 +42,29 @@
 
 - name: "PRELIM | Populate open port faces"
   listen_ports_facts:
+
+- name: "PRELIM | Install rsyslog"
+  apt:
+    name:
+      - rsyslog
+    state: present
+  when:
+    - rsyslog
+  tags:
+    - syslog
+    - rule_4.2.3
+
+- name: "PRELIM | Install syslog-ng"
+  apt:
+    name:
+      - syslog-ng
+    state: present
+  when:
+    - syslog
+    - ansible_facts.services["syslog-ng.service"] is not defined
+  tags:
+    - syslog
+    - rule_4.2.3
+
+- name: "PRELIM | Re-Populate Service facts"
+  service_facts:

@@ -43,3 +43,13 @@
   when:
     - not debian9cis_skip_for_travis
     - not debian9cis_chroot
+
+- name: reload rsyslogd
+  command: pkill -HUP rsyslogd
+
+- name: reload syslog-ng
+  systemd:
+    name: syslog-ng
+    state: reloaded
+    enabled: true
+    masked: false

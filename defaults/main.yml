@@ -1,6 +1,10 @@
 ---
 # defaults file for debian9-CIS
 
+remote_log_server: 'logs.EXAMPLE.com'
+remote_logging: false
+log_host: false
+
 debian9cis_skip_for_docker: true
 debian9cis_skip_for_travis: true
 debian9cis_chroot: true
@@ -26,6 +30,7 @@ debian9cis_section_1: false
 debian9cis_section_2: false
 debian9cis_section_3: false
 debian9cis_section_4: true
+debian9cis_section_5: false
 
 # Enable Section 1 configurations
 debian9cis_rule_1_1_1_1: true
@@ -167,6 +172,45 @@ debian9cis_rule_4_1_16: true
 debian9cis_rule_4_1_17: true
 debian9cis_rule_4_1_18: true
 
+debian9cis_rule_4_2_1_1: true
+debian9cis_rule_4_2_1_2: true
+debian9cis_rule_4_2_1_3: true
+debian9cis_rule_4_2_1_4: true
+debian9cis_rule_4_2_1_5: true
+debian9cis_rule_4_2_2_1: true
+debian9cis_rule_4_2_2_2: true
+debian9cis_rule_4_2_2_3: true # may need to create folder in prelim
+debian9cis_rule_4_2_2_4: true
+debian9cis_rule_4_2_2_5: true
+debian9cis_rule_4_2_3: true
+debian9cis_rule_4_2_4: true
+debian9cis_rule_4_3: true
+
+# TODO: 4.2.1.2  /etc/rsyslog.d/*.conf files?
+# Services that ansible is having trouble finding
+#         auditd
+#      - ansible_facts.services["avahi-daemon.service"] is defined
+#      - ansible_facts.services["cups.service"] is defined
+#        - ansible_facts.services["isc-dhcp-server.service"] is defined
+#        - ansible_facts.services["isc-dhcp-server6.service"] is defined
+#      - ansible_facts.services["slapd.service"] is defined
+#        - ansible_facts.services["nfs-server.service"] is defined
+#        - ansible_facts.services["rpcbind.service"] is defined
+#      - ansible_facts.services["bind9.service"] is defined
+#      - ansible_facts.services["vsftpd.service"] is defined
+#      - ansible_facts.services["apache2.service"] is defined
+#      - ansible_facts.services["smbd.service"] is defined
+#      - ansible_facts.services["squid.service"] is defined
+#      - ansible_facts.services["snmpd.service"] is defined
+#      - ansible_facts.services["postfix.service"] is defined
+#      - ansible_facts.services["rsync.service"] is defined
+#      - ansible_facts.services["nis.service"] is defined
+# rsyslog
+# syslog-ng
+
+rsyslog: true
+syslog: true
+debian9cis_logrotate: "daily"
 
 use_selinux: true
 debian9cis_setup_firewall: false
