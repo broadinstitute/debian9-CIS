@@ -754,14 +754,14 @@
 - name: "NOTSCORED | 3.7 | PATCH | Disable IPv6"
   lineinfile:
     state: present
-    dest: /boot/grub/grub.cfg
+    dest: /etc/default/grub
     backrefs: yes
     regexp: '^(GRUB_CMDLINE_LINUX=(?!.* ipv6.disable)\"[^\"]+)(\".*)'
     line: '\1 ipv6.disable=1"\2'
   when:
     - debian9cis_rule_3_7
   notify:
-    - update-grub
+    - update_grub
   tags:
     - level1
     - notscored

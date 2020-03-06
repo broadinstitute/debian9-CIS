@@ -35,4 +35,9 @@
 - include: section3.yml
   become: true
   when: debian9cis_section_3
-  tags: section2
+  tags: section3
+
+- include: section4.yml
+  become: true
+  when: debian9cis_section_4
+  tags: section4

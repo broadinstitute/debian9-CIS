@@ -24,7 +24,8 @@ debian9cis_ignore_remount_errors: false
 prelim_tasks: true
 debian9cis_section_1: false
 debian9cis_section_2: false
-debian9cis_section_3: true
+debian9cis_section_3: false
+debian9cis_section_4: true
 
 # Enable Section 1 configurations
 debian9cis_rule_1_1_1_1: true
@@ -142,10 +143,35 @@ debian9cis_rule_3_5_2_3: true
 debian9cis_rule_3_5_2_4: true
 debian9cis_rule_3_5_3: true
 debian9cis_rule_3_6: true
-debian9cis_rule_3_7: true
+debian9cis_rule_3_7: false
+# tODO: 3.7
 
+debian9cis_rule_4_1_1_1: true
+debian9cis_rule_4_1_1_2: true
+debian9cis_rule_4_1_1_3: true
+debian9cis_rule_4_1_2: true
+debian9cis_rule_4_1_3: true
+debian9cis_rule_4_1_4: true
+debian9cis_rule_4_1_5: true
+debian9cis_rule_4_1_6: true
+debian9cis_rule_4_1_7: true
+debian9cis_rule_4_1_8: true
+debian9cis_rule_4_1_9: true
+debian9cis_rule_4_1_10: true
+debian9cis_rule_4_1_11: true
+debian9cis_rule_4_1_12: true
+debian9cis_rule_4_1_13: true
+debian9cis_rule_4_1_14: true
+debian9cis_rule_4_1_15: true
+debian9cis_rule_4_1_16: true
+debian9cis_rule_4_1_17: true
+debian9cis_rule_4_1_18: true
+
+
+use_selinux: true
 debian9cis_setup_firewall: false
 disable_wireless: false
+deb9_audit_rules_template: debian9cis_rule_4_1_4 or debian9cis_rule_4_1_5 or debian9cis_rule_4_1_6 or debian9cis_rule_4_1_7 or debian9cis_rule_4_1_8 or debian9cis_rule_4_1_9 or debian9cis_rule_4_1_10  or debian9cis_rule_4_1_11 or debian9cis_rule_4_1_12 or debian9cis_rule_4_1_13 or debian9cis_rule_4_1_14 or debian9cis_rule_4_1_15 or debian9cis_rule_4_1_16 or debian9cis_rule_4_1_17 or debian9cis_rule_4_1_18
 # Anything not marked as true needs to be reviewed
 
 debian9cis_hosts_allow:
@@ -235,3 +261,4 @@ debian9cis_vartmp:
   opts: "defaults,nodev,nosuid,noexec,bind"
   enabled: false
 
+max_log_file: 10
