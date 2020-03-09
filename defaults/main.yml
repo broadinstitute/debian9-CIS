@@ -29,8 +29,8 @@ prelim_tasks: true
 debian9cis_section_1: false
 debian9cis_section_2: false
 debian9cis_section_3: false
-debian9cis_section_4: true
-debian9cis_section_5: false
+debian9cis_section_4: false
+debian9cis_section_5: true
 
 # Enable Section 1 configurations
 debian9cis_rule_1_1_1_1: true
@@ -186,6 +186,51 @@ debian9cis_rule_4_2_3: true
 debian9cis_rule_4_2_4: true
 debian9cis_rule_4_3: true
 
+
+debian9cis_rule_5_1_1: true
+debian9cis_rule_5_1_2: true
+debian9cis_rule_5_1_3: true
+debian9cis_rule_5_1_4: true
+debian9cis_rule_5_1_5: true
+debian9cis_rule_5_1_6: true
+debian9cis_rule_5_1_7: true
+debian9cis_rule_5_1_8: true
+debian9cis_rule_5_2_1: true
+debian9cis_rule_5_2_2: true
+debian9cis_rule_5_2_3: true
+debian9cis_rule_5_2_4: true
+debian9cis_rule_5_2_5: true
+debian9cis_rule_5_2_6: true
+debian9cis_rule_5_2_7: true
+debian9cis_rule_5_2_8: true
+debian9cis_rule_5_2_9: true
+debian9cis_rule_5_2_10: true
+debian9cis_rule_5_2_11: true
+debian9cis_rule_5_2_12: true
+debian9cis_rule_5_2_13: true
+debian9cis_rule_5_2_14: true
+debian9cis_rule_5_2_15: true
+debian9cis_rule_5_2_16: true
+debian9cis_rule_5_2_17: true
+debian9cis_rule_5_2_18: true
+debian9cis_rule_5_2_19: true
+debian9cis_rule_5_3_1: true
+debian9cis_rule_5_3_2: true
+debian9cis_rule_5_3_3: true
+debian9cis_rule_5_3_4: true
+debian9cis_rule_5_4_1_1: true
+debian9cis_rule_5_4_1_2: true
+debian9cis_rule_5_4_1_3: true
+debian9cis_rule_5_4_1_4: true
+debian9cis_rule_5_4_1_5: true
+debian9cis_rule_5_4_2: true
+debian9cis_rule_5_4_3: true
+debian9cis_rule_5_4_4: true # not implemented for /etc/profile.d/*.sh
+debian9cis_rule_5_4_5: true
+debian9cis_rule_5_5: false
+debian9cis_rule_5_6: true
+
+# TODO: 5.5 manual remeidation needed?
 # TODO: 4.2.1.2  /etc/rsyslog.d/*.conf files?
 # Services that ansible is having trouble finding
 #         auditd
@@ -205,17 +250,54 @@ debian9cis_rule_4_3: true
 #      - ansible_facts.services["postfix.service"] is defined
 #      - ansible_facts.services["rsync.service"] is defined
 #      - ansible_facts.services["nis.service"] is defined
-# rsyslog
-# syslog-ng
 
 rsyslog: true
 syslog: true
 debian9cis_logrotate: "daily"
+verbose_logs: true
+
+# See CIS for list of weak ciphers: 5.2.13
+allowed_ciphers: >
+  chacha20-poly1305\@openssh.com,aes128-ctr,aes192-ctr,
+  aes256-ctr,aes128-gcm\@openssh.com,aes256-gcm\@openssh.com
+
+allowed_mac: >
+  umac-64-etm\@openssh.com,umac-128-etm\@openssh.com,hmac-sha2-256-etm\@openssh.com,
+  hmac-sha2-512-etm\@openssh.com,umac-64\@openssh.com,
+  umac-128\@openssh.com,hmac-sha2-256,hmac-sha2-512
+
+allowed_key_exchange: >
+  curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,
+  ecdh-sha2-nistp521,diffie-hellman-group-exchangesha256
+
+debian9cis_pwquality:
+  - key: 'minlen'
+    value: '14'
+  - key: 'dcredit'
+    value: '-1'
+  - key: 'ucredit'
+    value: '-1'
+  - key: 'ocredit'
+    value: '-1'
+  - key: 'lcredit'
+    value: '-1'
+
+debian9cis_pass:
+  max_days: 90
+  min_days: 7
+  warn_age: 7
+
+debian9cis_shell:
+  timeout: 600
 
 use_selinux: true
 debian9cis_setup_firewall: false
 disable_wireless: false
-deb9_audit_rules_template: debian9cis_rule_4_1_4 or debian9cis_rule_4_1_5 or debian9cis_rule_4_1_6 or debian9cis_rule_4_1_7 or debian9cis_rule_4_1_8 or debian9cis_rule_4_1_9 or debian9cis_rule_4_1_10  or debian9cis_rule_4_1_11 or debian9cis_rule_4_1_12 or debian9cis_rule_4_1_13 or debian9cis_rule_4_1_14 or debian9cis_rule_4_1_15 or debian9cis_rule_4_1_16 or debian9cis_rule_4_1_17 or debian9cis_rule_4_1_18
+deb9_audit_rules_template: >
+  debian9cis_rule_4_1_4 or debian9cis_rule_4_1_5 or debian9cis_rule_4_1_6 or debian9cis_rule_4_1_7
+  or debian9cis_rule_4_1_8 or debian9cis_rule_4_1_9 or debian9cis_rule_4_1_10
+  or debian9cis_rule_4_1_11 or debian9cis_rule_4_1_12 or debian9cis_rule_4_1_13 or debian9cis_rule_4_1_14
+  or debian9cis_rule_4_1_15 or debian9cis_rule_4_1_16 or debian9cis_rule_4_1_17 or debian9cis_rule_4_1_18
 # Anything not marked as true needs to be reviewed
 
 debian9cis_hosts_allow:
