@@ -30,7 +30,8 @@ debian9cis_section_1: false
 debian9cis_section_2: false
 debian9cis_section_3: false
 debian9cis_section_4: false
-debian9cis_section_5: true
+debian9cis_section_5: false
+debian9cis_section_6: true
 
 # Enable Section 1 configurations
 debian9cis_rule_1_1_1_1: true
@@ -230,6 +231,44 @@ debian9cis_rule_5_4_5: true
 debian9cis_rule_5_5: false
 debian9cis_rule_5_6: true
 
+debian9cis_rule_6_1_1: true
+debian9cis_rule_6_1_2: true
+
+debian9cis_rule_6_1_1: true
+debian9cis_rule_6_1_2: true
+debian9cis_rule_6_1_3: true
+debian9cis_rule_6_1_4: true
+debian9cis_rule_6_1_5: true
+debian9cis_rule_6_1_6: true
+debian9cis_rule_6_1_7: true
+debian9cis_rule_6_1_8: true
+debian9cis_rule_6_1_9: true
+debian9cis_rule_6_1_10: true
+debian9cis_rule_6_1_11: true
+debian9cis_rule_6_1_12: true
+debian9cis_rule_6_1_13: false # not scored but SUID files exist
+debian9cis_rule_6_1_14: false # not scored but SGID files exist
+debian9cis_rule_6_2_1: true
+debian9cis_rule_6_2_2: true
+debian9cis_rule_6_2_3: true
+debian9cis_rule_6_2_4: true
+debian9cis_rule_6_2_5: true
+debian9cis_rule_6_2_6: true # make sure root should have write permissions....
+debian9cis_rule_6_2_7: true
+debian9cis_rule_6_2_8: true
+debian9cis_rule_6_2_9: true
+debian9cis_rule_6_2_10: false # TODO
+debian9cis_rule_6_2_11: true
+debian9cis_rule_6_2_12: true
+debian9cis_rule_6_2_13: true
+debian9cis_rule_6_2_14: true
+debian9cis_rule_6_2_15: true
+debian9cis_rule_6_2_16: true
+debian9cis_rule_6_2_17: true
+debian9cis_rule_6_2_18: true
+debian9cis_rule_6_2_19: true
+debian9cis_rule_6_2_20: true
+
 # TODO: 5.5 manual remeidation needed?
 # TODO: 4.2.1.2  /etc/rsyslog.d/*.conf files?
 # Services that ansible is having trouble finding
@@ -289,6 +328,8 @@ debian9cis_pass:
 
 debian9cis_shell:
   timeout: 600
+
+user_dir_mode: 750
 
 use_selinux: true
 debian9cis_setup_firewall: false

@@ -46,3 +46,8 @@
   become: true
   when: debian9cis_section_5
   tags: section5
+
+- include: section6.yml
+  become: true
+  when: debian9cis_section_6
+  tags: section6
