@@ -165,21 +165,36 @@
     - rule_1.1.1.5
 
 - name: "SCORED | 1.1.2 | PATCH | Ensure separate partition exists for /tmp | enable and start/restart tmp.mount"
-  systemd:
-    name: tmp.mount
-    daemon_reload: yes
-    enabled: yes
-    masked: no
-    state: started
+  copy:
+      src: "/usr/share/systemd/tmp.mount"
+      dest: /etc/systemd/system/tmp.mount
+      owner: root
+      group: root
+      mode: 0644
+      force: true
+      remote_src: true
+  notify:
+      - systemd restart tmp.mount
   when:
-    - debian9cis_rule_1_1_2
-    - not debian9cis_skip_for_travis
-    - not debian9cis_chroot
+      - debian9cis_rule_1_1_2
+      - not debian9cis_skip_for_travis
   tags:
-    - level2
-    - scored
-    - patch
-    - rule_1.1.2
+      - level2
+      - scored
+      - patch
+      - rule_1.1.2
+
+- name: "SCORED | 1.1.2 | PATCH | Ensure separate partition exists for /tmp | enable and start/restart tmp.mount"
+  command: systemctl enable tmp.mount
+  when:
+      - debian9cis_rule_1_1_2
+      - not debian9cis_skip_for_travis
+      - not debian9cis_chroot
+  tags:
+      - level2
+      - scored
+      - patch
+      - rule_1.1.2
 
 # TODO: systemd restart tmp.mount handler?
 - name: "SCORED | 1.1.3 | PATCH | Ensure nodev option set on /tmp partition\n
@@ -398,7 +413,7 @@
   when:
     - not debian9cis_skip_for_docker
     - not debian9cis_allow_autofs
-    - autofs_service_status.stdout != "enabled"
+    - autofs_installed
     - debian9cis_rule_1_1_22
   tags:
     - level1

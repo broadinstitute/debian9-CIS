@@ -1,14 +1,5 @@
 # TODO: You can check value of registers by running with -v
 
-- name: "PRELIM | Check for autofs service"
-  shell: "systemctl is-enabled autofs"
-  args:
-      executable: /bin/bash
-  register: autofs_service_status
-  changed_when: false
-  check_mode: false
-  when: not debian9cis_skip_for_docker
-
 - name: "PRELIM | Check if prelink package is installed"
   command: dpkg -s prelink
   register: prelink_installed
@@ -42,6 +33,38 @@
 
 - name: "PRELIM | Populate open port faces"
   listen_ports_facts:
+
+- name: "PRELIM | Flush existing firewall rules | Section 3"
+  iptables:
+    flush: true
+
+- name: "PRELIM | Make sure rules directory exists | Section 3"
+  file:
+    state: directory
+    owner: root
+    group: root
+    mode: 644
+    path: /etc/iptables
+
+- name: "PRELIM | Install auditd"
+  apt:
+    name:
+      - auditd
+    state: present
+    update_cache: true
+  tags:
+    - rule_4.1.2
+
+- name: "PRELIM | Install autofs"
+  apt:
+    name:
+      - autofs
+    state: present
+  when:
+    - autofs_installed
+  tags:
+    - autofs
+    - rule_1.1.22
 
 - name: "PRELIM | Install rsyslog"
   apt:

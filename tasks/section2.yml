@@ -110,10 +110,6 @@
     - patch
     - rule_2.2.2
 
-- debug:
-    var: avahi_service_status
-    verbosity: 2
-
 - name: "SCORED | 2.2.3 | PATCH | Ensure Avahi Server is not enabled"
   systemd:
       name: avahi-daemon
@@ -148,7 +144,7 @@
 
 - name: "SCORED | 2.2.5 | PATCH | Ensure DHCP Server is not enabled"
   block:
-    - name: Ensure isc-dhcp-server is not enabled
+    - name: SCORED | 2.2.5 | PATCH | Ensure isc-dhcp-server is not enabled
       systemd:
         name: isc-dhcp-server
         state: stopped
@@ -156,7 +152,7 @@
       when:
         - ansible_facts.services["isc-dhcp-server.service"] is defined
 
-    - name: Ensure isc-dhcp-server6 is not enabled
+    - name: SCORED | 2.2.5 | PATCH | Ensure isc-dhcp-server6 is not enabled
       systemd:
         name: isc-dhcp-server6
         state: stopped
@@ -191,7 +187,7 @@
 
 - name: "SCORED | 2.2.7 | PATCH | Ensure NFS and RPC are not enabled"
   block:
-    - name: Ensure nfs-server is not enabled
+    - name: SCORED | 2.2.7 | PATCH | Ensure nfs-server is not enabled
       systemd:
         name: nfs-server
         state: stopped
@@ -199,7 +195,7 @@
       when:
         - ansible_facts.services["nfs-server.service"] is defined
 
-    - name: Ensure rpcbind is not enabled
+    - name: SCORED | 2.2.7 | PATCH | Ensure rpcbind is not enabled
       systemd:
         name: rpcbind
         state: stopped

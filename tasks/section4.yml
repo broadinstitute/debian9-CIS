@@ -149,7 +149,7 @@
       group: root
       mode: 0640
   when:
-      - deb9_audit_rules_template|bool
+    - deb9_audit_rules_template
   notify:
       - restart auditd
   tags:
@@ -311,7 +311,7 @@
     group: root
     mode: 0640
   notify: 
-     - reload syslog-ng
+     - restart syslog-ng
   when:
       - debian9cis_rule_4_2_2_2
   tags:
@@ -345,7 +345,7 @@
         line: 'destination logserver { tcp("{{ remote_log_server }}" port(514)); }; log { source(src); destination(logserver); };'
         create: true
       notify: 
-        - reload syslog-ng
+        - restart syslog-ng
     - name: "NOTSCORED | 4.2.2.4 | PATCH | Ensure syslog-ng is configured to send logs to a remote log host | log"
       lineinfile:
         dest: /etc/syslog-ng/syslog-ng.conf
@@ -353,7 +353,7 @@
         line: 'log { source(src); destination(logserver); };'
         create: true
       notify: 
-        - reload syslog-ng
+        - restart syslog-ng
   when:
       - debian9cis_rule_4_2_2_4
   tags:
@@ -372,7 +372,7 @@
         line: 'source net{ tcp(); };'
         create: true
       notify: 
-        - reload syslog-ng
+        - restart syslog-ng
     - name: "NOTSCORED | 4.2.2.5 | PATCH | Ensure remote syslog-ng messages are only accepted on designated log hosts | destination remote"
       lineinfile:
         dest: /etc/syslog-ng/syslog-ng.conf
@@ -380,7 +380,7 @@
         line: 'destination remote { file("/var/log/remote/${FULLHOST}-log"); };'
         create: true
       notify: 
-        - reload syslog-ng
+        - restart syslog-ng
     - name: "NOTSCORED | 4.2.2.5 | PATCH | Ensure remote syslog-ng messages are only accepted on designated log hosts | log"
       lineinfile:
         dest: /etc/syslog-ng/syslog-ng.conf
@@ -388,7 +388,7 @@
         line: 'log { source(net);  destination(remote); };'
         create: true
       notify: 
-        - reload syslog-ng
+        - restart syslog-ng
   when:
       - debian9cis_rule_4_2_2_5
       - remote_logging

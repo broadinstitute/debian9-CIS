@@ -47,12 +47,14 @@
 - name: reload rsyslogd
   command: pkill -HUP rsyslogd
 
-- name: reload syslog-ng
+- name: restart syslog-ng
   systemd:
     name: syslog-ng
-    state: reloaded
+    state: restarted
     enabled: true
     masked: false
+  when:
+    - ansible_facts.services["syslog-ng.service"] is defined
 
 - name: restart sshd
   systemd:

@@ -754,21 +754,32 @@
       - not_implemented
 
 - name: "SCORED | 5.4.2 | PATCH | Ensure system accounts are non-login"
-  command: >
-    for user in `awk -F: '($3 < 1000) {print $1 }' /etc/passwd`; do
-     if [ $user != "root" ]; then
-      usermod -L $user
-      if [ $user != "sync" ] && [ $user != "shutdown" ] && [ $user != "halt" ];
-      then
-        usermod -s /usr/sbin/nologin $user
-      fi
-     fi
-    done
-  changed_when: false
+  block: 
+    - name: "5.4.2 | Ensure system accounts are non-login | Get Users"
+      command: "awk -F: '($3 < 1000) {print $1 }' /etc/passwd"
+      register: sys_users
+
+    - name: "5.4.2 | Ensure system accounts are non-login | Lock users"
+      user:
+        name: item
+        password_lock: yes
+      when:
+        - item != "root"
+      with_items: "{{ sys_users.stdout.split('\n') }}"
+
+    - name: "5.4.2 | Ensure system accounts are non-login | Set nonlogin shell"
+      user:
+        name: item
+        shell: /usr/sbin/nologin
+      when:
+        - item != "root"
+        - item != "sync"
+        - item != "shutdown"
+        - item != "halt"
+      with_items: "{{ sys_users.stdout.split('\n') }}"
+
   when:
       - debian9cis_rule_5_4_2
-      - system_accounts_non_login_1.stdout
-      - system_accounts_non_login_2.stdout
   tags:
       - level1
       - patch

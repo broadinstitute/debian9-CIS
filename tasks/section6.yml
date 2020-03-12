@@ -387,20 +387,28 @@
 - name: "SCORED | 6.2.10 | PATCH | Ensure users' dot files are not group or world writable"
   block:
     - name: "SCORED | 6.2.10 | PATCH | Ensure users' dot files are not group or world writable | get users"
-      shell: "cat /etc/passwd | egrep -v '^(root|halt|sync|shutdown)' | awk -F: '($7 !=\"/usr/sbin/nologin\" && $7 != \"/bin/false\") { print $1 \" \" $6}'"
-      register: users
+      shell: "cat /etc/passwd | egrep -v '^(root|halt|sync|shutdown)' | awk -F: '($7 !=\"/usr/sbin/nologin\" && $7 != \"/bin/false\") { print $6}'"
+      register: user_dirs
 
-    - name: "SCORED | 6.2.7 | 6.2.8 | 6.2.9 | ensure users home directory exists and set permissions"
-      file:
-        path: "{{ item.split()[1] }}"
-        owner: "{{ item.split()[0] }}"
-        state: directory
-        mode: user_dir_mode
-      with_items: "{{ users.stdout.split(\"(?<!\\G\\S+)\\s\") }}"
+    - name: "SCORED | 6.2.10 | PATCH | Ensure users' dot files are not group or world writable | get users' dotfiles"
+      find:
+        paths: "{{ user_dirs.stdout.split() }}"
+        patterns: .[A-Za-z0-9]*
+      register: dotfiles
+
+    - name: SCORED | 6.2.10 | PATCH | Ensure users' dot files are not group or world writable | check if group permissions"
+      shell: "echo $(ls -ld {{ item.path }} | cut -f1 -d\" \") | cut -c6"
+      register: fileperm
+      failed_when: fileperm.stdout != "-"
+      with_items: "{{ dotfiles.files }}"
+
+    - name: SCORED | 6.2.10 | PATCH | Ensure users' dot files are not group or world writable | check if world permissions"
+      shell: "echo $(ls -ld {{ item.path }} | cut -f1 -d\" \") | cut -c9"
+      register: fileperm
+      failed_when: fileperm.stdout != "-"
+      with_items: "{{ dotfiles.files }}"
   when:
-      - debian9cis_rule_6_2_7
-      - debian9cis_rule_6_2_8
-      - debian9cis_rule_6_2_9
+      - debian9cis_rule_6_2_10
       - fail_on_manual_remediation_actions
   tags:
       - level1

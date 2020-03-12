@@ -1,14 +1,24 @@
 ---
 # defaults file for debian9-CIS
 
+# Section 4
+
 remote_log_server: 'logs.EXAMPLE.com'
 remote_logging: false
 log_host: false
+deb9_audit_rules_template: true
 
-debian9cis_skip_for_docker: true
-debian9cis_skip_for_travis: true
-debian9cis_chroot: true
+debian9cis_skip_for_docker: false
+debian9cis_skip_for_travis: false
+debian9cis_chroot: false
 debian9cis_raspbian: false
+
+
+# Section 1
+autofs_installed: true
+debian9cis_allow_autofs: false
+
+# Section 2
 
 debian9cis_config_aide: true
 # AIDE cron settings
@@ -22,15 +32,15 @@ debian9cis_aide_cron:
   aide_month: '*'
   aide_weekday: '*'
 
-debian9cis_allow_autofs: false
+
 debian9cis_ignore_remount_errors: false
 
 prelim_tasks: true
-debian9cis_section_1: false
-debian9cis_section_2: false
-debian9cis_section_3: false
-debian9cis_section_4: false
-debian9cis_section_5: false
+debian9cis_section_1: true
+debian9cis_section_2: true
+debian9cis_section_3: true
+debian9cis_section_4: true
+debian9cis_section_5: true
 debian9cis_section_6: true
 
 # Enable Section 1 configurations
@@ -39,7 +49,7 @@ debian9cis_rule_1_1_1_2: true
 debian9cis_rule_1_1_1_3: true
 debian9cis_rule_1_1_1_4: true
 debian9cis_rule_1_1_1_5: true
-debian9cis_rule_1_1_2: true
+debian9cis_rule_1_1_2: false
 debian9cis_rule_1_1_3: true
 debian9cis_rule_1_1_4: true
 debian9cis_rule_1_1_5: true
@@ -128,7 +138,6 @@ debian9cis_rule_3_2_6: true
 debian9cis_rule_3_2_7: true
 debian9cis_rule_3_2_8: true
 debian9cis_rule_3_2_9: true
-
 debian9cis_rule_3_3_1: true
 debian9cis_rule_3_3_2: true
 debian9cis_rule_3_3_3: true
@@ -138,8 +147,7 @@ debian9cis_rule_3_4_1: true
 debian9cis_rule_3_4_2: true
 debian9cis_rule_3_4_3: true
 debian9cis_rule_3_4_4: true
-
-debian9cis_rule_3_5_1_1: true
+debian9cis_rule_3_5_1_1: false # Default Deny Firewall rules block Vagrant, so skipped for testing
 debian9cis_rule_3_5_1_2: true
 debian9cis_rule_3_5_1_3: true
 debian9cis_rule_3_5_1_4: true
@@ -149,8 +157,7 @@ debian9cis_rule_3_5_2_3: true
 debian9cis_rule_3_5_2_4: true
 debian9cis_rule_3_5_3: true
 debian9cis_rule_3_6: true
-debian9cis_rule_3_7: false
-# tODO: 3.7
+debian9cis_rule_3_7: true
 
 debian9cis_rule_4_1_1_1: true
 debian9cis_rule_4_1_1_2: true
@@ -247,7 +254,7 @@ debian9cis_rule_6_1_10: true
 debian9cis_rule_6_1_11: true
 debian9cis_rule_6_1_12: true
 debian9cis_rule_6_1_13: false # not scored but SUID files exist
-debian9cis_rule_6_1_14: false # not scored but SGID files exist
+debian9cis_rule_6_1_14: false # not scored but SGID files exist...
 debian9cis_rule_6_2_1: true
 debian9cis_rule_6_2_2: true
 debian9cis_rule_6_2_3: true
@@ -257,7 +264,7 @@ debian9cis_rule_6_2_6: true # make sure root should have write permissions....
 debian9cis_rule_6_2_7: true
 debian9cis_rule_6_2_8: true
 debian9cis_rule_6_2_9: true
-debian9cis_rule_6_2_10: false # TODO
+debian9cis_rule_6_2_10: true
 debian9cis_rule_6_2_11: true
 debian9cis_rule_6_2_12: true
 debian9cis_rule_6_2_13: true
@@ -332,14 +339,8 @@ debian9cis_shell:
 user_dir_mode: 750
 
 use_selinux: true
-debian9cis_setup_firewall: false
-disable_wireless: false
-deb9_audit_rules_template: >
-  debian9cis_rule_4_1_4 or debian9cis_rule_4_1_5 or debian9cis_rule_4_1_6 or debian9cis_rule_4_1_7
-  or debian9cis_rule_4_1_8 or debian9cis_rule_4_1_9 or debian9cis_rule_4_1_10
-  or debian9cis_rule_4_1_11 or debian9cis_rule_4_1_12 or debian9cis_rule_4_1_13 or debian9cis_rule_4_1_14
-  or debian9cis_rule_4_1_15 or debian9cis_rule_4_1_16 or debian9cis_rule_4_1_17 or debian9cis_rule_4_1_18
-# Anything not marked as true needs to be reviewed
+debian9cis_setup_firewall: true
+disable_wireless: true
 
 debian9cis_hosts_allow:
   - "10.0.0.0/255.0.0.0"
