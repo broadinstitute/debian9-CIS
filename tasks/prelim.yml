@@ -55,6 +55,44 @@
   tags:
     - rule_4.1.2
 
+- name: "PRELIM | Install selinux"
+  apt:
+    name:
+      - python-selinux
+      - selinux-policy-src
+    state: present
+    update_cache: true
+  when:
+    - selinux
+  tags:
+    - rule_1.6.1.1
+
+- name: "PRELIM | Install AppArmor"
+  apt:
+    name: apparmor
+    state: present
+  when:
+    - debian9cis_rule_1_6_3
+    - not selinux
+  tags:
+    - level2
+    - scored
+    - patch
+    - rule_1.6.3
+
+- name: "PRELIM | Install AppArmor utils"
+  apt:
+    name: apparmor-utils
+    state: present
+  when:
+    - debian9cis_rule_1_6_3
+    - not selinux
+  tags:
+    - level2
+    - scored
+    - patch
+    - rule_1.6.3
+
 - name: "PRELIM | Install autofs"
   apt:
     name:

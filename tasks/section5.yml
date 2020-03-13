@@ -673,8 +673,6 @@
         dest:  /etc/login.defs
         regexp: '^PASS_MAX_DAYS'
         line: "PASS_MAX_DAYS {{ debian9cis_pass['max_days'] }}"
-      notify:
-        - apply SPS changes
   when:
     - debian9cis_rule_5_4_1_1
   tags:
@@ -697,8 +695,6 @@
         dest:  /etc/login.defs
         regexp: '^PASS_MIN_DAYS'
         line: "PASS_MIN_DAYS {{ debian9cis_pass['min_days'] }}"
-      notify:
-        - apply SPS changes
   when:
       - debian9cis_rule_5_4_1_2
   tags:
@@ -721,8 +717,6 @@
         dest:  /etc/login.defs
         regexp: '^PASS_WARN_AGE'
         line: "PASS_WARN_AGE {{ debian9cis_pass['warn_age'] }}"
-      notify:
-        - apply SPS changes
   when:
       - debian9cis_rule_5_4_1_3
   tags:
@@ -811,6 +805,20 @@
         dest: /etc/profile
         regexp: '^umask'
         line: 'umask 027'
+
+    - name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive | get shells"
+      find:
+        paths: /etc/profile.d/
+        patterns: '*.sh'
+      register: shell_files
+
+    - name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive | umask shells"
+      lineinfile:
+        state: present
+        dest: "{{ item.path }}"
+        regexp: '^umask'
+        line: 'umask 027'
+      with_items: "{{ shell_files.files }}"
   when:
       - debian9cis_rule_5_4_4
   tags:

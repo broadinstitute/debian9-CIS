@@ -311,7 +311,7 @@
     group: root
     mode: 0640
   notify: 
-     - restart syslog-ng
+    - restart syslog-ng
   when:
       - debian9cis_rule_4_2_2_2
   tags:

@@ -17,6 +17,7 @@ debian9cis_raspbian: false
 # Section 1
 autofs_installed: true
 debian9cis_allow_autofs: false
+selinux: false
 
 # Section 2
 
@@ -49,18 +50,18 @@ debian9cis_rule_1_1_1_2: true
 debian9cis_rule_1_1_1_3: true
 debian9cis_rule_1_1_1_4: true
 debian9cis_rule_1_1_1_5: true
-debian9cis_rule_1_1_2: false
+debian9cis_rule_1_1_2: true
 debian9cis_rule_1_1_3: true
 debian9cis_rule_1_1_4: true
 debian9cis_rule_1_1_5: true
-debian9cis_rule_1_1_6: true
-debian9cis_rule_1_1_7: true
-debian9cis_rule_1_1_8: true
-debian9cis_rule_1_1_9: true
-debian9cis_rule_1_1_10: true
-debian9cis_rule_1_1_11: true
-debian9cis_rule_1_1_12: true
-debian9cis_rule_1_1_13: true
+debian9cis_rule_1_1_6: false
+debian9cis_rule_1_1_7: false
+debian9cis_rule_1_1_8: false
+debian9cis_rule_1_1_9: false
+debian9cis_rule_1_1_10: false
+debian9cis_rule_1_1_11: false
+debian9cis_rule_1_1_12: false
+debian9cis_rule_1_1_13: false
 debian9cis_rule_1_1_14: true
 debian9cis_rule_1_1_15: true
 debian9cis_rule_1_1_16: true
@@ -89,11 +90,8 @@ debian9cis_rule_1_6_2_1: true
 debian9cis_rule_1_6_2_2: true
 debian9cis_rule_1_6_3: true
 debian9cis_rule_1_7_1_1: true
-debian9cis_rule_1_7_1_1_audit: false # may want ot send output to file
 debian9cis_rule_1_7_1_2: true
-debian9cis_rule_1_7_1_2_audit: false # may want ot send output to file
 debian9cis_rule_1_7_1_3: true
-debian9cis_rule_1_7_1_3_audit: false # may want ot send output to file
 debian9cis_rule_1_7_1_4: true
 debian9cis_rule_1_7_1_5: true
 debian9cis_rule_1_7_1_6: true
@@ -179,7 +177,6 @@ debian9cis_rule_4_1_15: true
 debian9cis_rule_4_1_16: true
 debian9cis_rule_4_1_17: true
 debian9cis_rule_4_1_18: true
-
 debian9cis_rule_4_2_1_1: true
 debian9cis_rule_4_2_1_2: true
 debian9cis_rule_4_2_1_3: true
@@ -187,13 +184,12 @@ debian9cis_rule_4_2_1_4: true
 debian9cis_rule_4_2_1_5: true
 debian9cis_rule_4_2_2_1: true
 debian9cis_rule_4_2_2_2: true
-debian9cis_rule_4_2_2_3: true # may need to create folder in prelim
+debian9cis_rule_4_2_2_3: true
 debian9cis_rule_4_2_2_4: true
 debian9cis_rule_4_2_2_5: true
 debian9cis_rule_4_2_3: true
 debian9cis_rule_4_2_4: true
 debian9cis_rule_4_3: true
-
 
 debian9cis_rule_5_1_1: true
 debian9cis_rule_5_1_2: true
@@ -233,14 +229,13 @@ debian9cis_rule_5_4_1_4: true
 debian9cis_rule_5_4_1_5: true
 debian9cis_rule_5_4_2: true
 debian9cis_rule_5_4_3: true
-debian9cis_rule_5_4_4: true # not implemented for /etc/profile.d/*.sh
+debian9cis_rule_5_4_4: true
 debian9cis_rule_5_4_5: true
-debian9cis_rule_5_5: false
+debian9cis_rule_5_5: false # Make sure the physical location of server is secure
 debian9cis_rule_5_6: true
 
 debian9cis_rule_6_1_1: true
 debian9cis_rule_6_1_2: true
-
 debian9cis_rule_6_1_1: true
 debian9cis_rule_6_1_2: true
 debian9cis_rule_6_1_3: true
@@ -260,7 +255,7 @@ debian9cis_rule_6_2_2: true
 debian9cis_rule_6_2_3: true
 debian9cis_rule_6_2_4: true
 debian9cis_rule_6_2_5: true
-debian9cis_rule_6_2_6: true # make sure root should have write permissions....
+debian9cis_rule_6_2_6: true
 debian9cis_rule_6_2_7: true
 debian9cis_rule_6_2_8: true
 debian9cis_rule_6_2_9: true
@@ -304,17 +299,13 @@ verbose_logs: true
 
 # See CIS for list of weak ciphers: 5.2.13
 allowed_ciphers: >
-  chacha20-poly1305\@openssh.com,aes128-ctr,aes192-ctr,
-  aes256-ctr,aes128-gcm\@openssh.com,aes256-gcm\@openssh.com
+  aes128-ctr,aes192-ctr,aes256-ctr
 
 allowed_mac: >
-  umac-64-etm\@openssh.com,umac-128-etm\@openssh.com,hmac-sha2-256-etm\@openssh.com,
-  hmac-sha2-512-etm\@openssh.com,umac-64\@openssh.com,
-  umac-128\@openssh.com,hmac-sha2-256,hmac-sha2-512
+  hmac-sha2-256,hmac-sha2-512
 
 allowed_key_exchange: >
-  curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,
-  ecdh-sha2-nistp521,diffie-hellman-group-exchangesha256
+  curve25519-sha256,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521
 
 debian9cis_pwquality:
   - key: 'minlen'
