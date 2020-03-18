@@ -633,6 +633,7 @@
 
 - name: "SCORED | 1.6.2.2 | PATCH | Ensure all AppArmor Profiles are enforcing"
   shell: aa-enforce /etc/apparmor.d/*
+  ignore_errors: true
   when:
     - not debian9cis_skip_for_docker
     - debian9cis_rule_1_6_2_2

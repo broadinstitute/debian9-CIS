@@ -31,7 +31,7 @@
   when:
     - netstat_install
 
-- name: "PRELIM | Populate open port faces"
+- name: PRELIM | Gather facts on listening ports
   listen_ports_facts:
 
 - name: "PRELIM | Flush existing firewall rules | Section 3"
