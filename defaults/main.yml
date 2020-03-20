@@ -236,8 +236,6 @@ debian9cis_rule_5_6: true
 
 debian9cis_rule_6_1_1: true
 debian9cis_rule_6_1_2: true
-debian9cis_rule_6_1_1: true
-debian9cis_rule_6_1_2: true
 debian9cis_rule_6_1_3: true
 debian9cis_rule_6_1_4: true
 debian9cis_rule_6_1_5: true
@@ -381,7 +379,6 @@ debian9cis_dovecot: false
 debian9cis_samba: false
 debian9cis_squid: false
 debian9cis_net_snmp: false
-debian9cis_allow_autofs: false
 
 
 debian9cis_time_synchronization_servers:
