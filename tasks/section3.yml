@@ -591,6 +591,7 @@
   when:
     - debian9cis_rule_3_5_2_1
     - debian9cis_setup_firewall
+    - ip6tables_allow
   tags:
     - level1
     - scored
@@ -627,6 +628,7 @@
   when:
     - debian9cis_rule_3_5_2_2
     - debian9cis_setup_firewall
+    - ip6tables_allow
   tags:
     - level1
     - scored
@@ -698,6 +700,7 @@
   when:
     - debian9cis_rule_3_5_2_3
     - debian9cis_setup_firewall
+    - ip6tables_allow
   tags:
     - level1
     - notscored

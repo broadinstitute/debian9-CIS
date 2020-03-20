@@ -291,7 +291,8 @@ debian9cis_rule_6_2_20: true
 #      - ansible_facts.services["nis.service"] is defined
 
 rsyslog: true
-syslog: true
+syslog: false
+ip6tables_allow: true
 debian9cis_logrotate: "daily"
 verbose_logs: true
 
