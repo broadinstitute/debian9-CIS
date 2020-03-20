@@ -306,7 +306,7 @@
 - name: "NOTSCORED | 4.2.2.2 | PATCH | Ensure logging is configured"
   template:
     src: syslog-ng.conf.j2
-    dest: /etc/syslog-ng/syslog-ng.conf
+    dest: g-ng/syslog-ng.conf
     owner: root
     group: root
     mode: 0640
@@ -329,6 +329,7 @@
     create: true
   when:
       - debian9cis_rule_4_2_2_3
+      - syslog
   tags:
       - level1
       - scored
@@ -356,6 +357,7 @@
         - restart syslog-ng
   when:
       - debian9cis_rule_4_2_2_4
+      - syslog
   tags:
       - level1
       - notscored
@@ -392,6 +394,7 @@
   when:
       - debian9cis_rule_4_2_2_5
       - remote_logging
+      - syslog
   tags:
       - level1
       - notscored
