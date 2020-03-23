@@ -296,6 +296,7 @@
   when:
       - debian9cis_rule_4_2_2_1
       - ansible_facts.services["syslog-ng.service"] is defined
+      - syslog
   tags:
       - level1
       - scored
@@ -306,7 +307,7 @@
 - name: "NOTSCORED | 4.2.2.2 | PATCH | Ensure logging is configured"
   template:
     src: syslog-ng.conf.j2
-    dest: g-ng/syslog-ng.conf
+    dest: /etc/syslog-ng/syslog-ng.conf
     owner: root
     group: root
     mode: 0640
@@ -314,6 +315,7 @@
     - restart syslog-ng
   when:
       - debian9cis_rule_4_2_2_2
+      - syslog
   tags:
       - level1
       - notscored
@@ -409,6 +411,7 @@
     state: present
   when:
     - debian9cis_rule_4_2_3
+    - not syslog
   tags:
     - level1
     - scored
@@ -424,6 +427,7 @@
   when:
     - debian9cis_rule_4_2_3
     - ansible_facts.services["syslog-ng.service"] is not defined
+    - syslog
   tags:
     - level1
     - scored
