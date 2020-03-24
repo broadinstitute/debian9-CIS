@@ -37,6 +37,8 @@
 - name: "PRELIM | Flush existing firewall rules | Section 3"
   iptables:
     flush: true
+  when:
+    - debian9cis_section_3
 
 - name: "PRELIM | Make sure rules directory exists | Section 3"
   file:
@@ -45,6 +47,8 @@
     group: root
     mode: 644
     path: /etc/iptables
+  when:
+    - debian9cis_section_3
 
 - name: "PRELIM | Install auditd"
   apt:

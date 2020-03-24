@@ -3,6 +3,7 @@
 - name: update grub
   become: true
   command: update-grub
+  ignore_errors: yes
 
 - name: systemd restart tmp.mount
   become: true
