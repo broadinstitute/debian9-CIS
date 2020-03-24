@@ -125,8 +125,8 @@ debian9cis_rule_2_3_3: true
 debian9cis_rule_2_3_4: true
 debian9cis_rule_2_3_5: true
 
-debian9cis_rule_3_1_1: false
-debian9cis_rule_3_1_2: false
+debian9cis_rule_3_1_1: true
+debian9cis_rule_3_1_2: true
 debian9cis_rule_3_2_1: true
 debian9cis_rule_3_2_2: true
 debian9cis_rule_3_2_3: true
@@ -146,14 +146,14 @@ debian9cis_rule_3_4_2: true
 debian9cis_rule_3_4_3: true
 debian9cis_rule_3_4_4: true
 debian9cis_rule_3_5_1_1: false # Default Deny Firewall rules block Vagrant, so skipped for testing
-debian9cis_rule_3_5_1_2: true
-debian9cis_rule_3_5_1_3: true
-debian9cis_rule_3_5_1_4: false
-debian9cis_rule_3_5_2_1: true
-debian9cis_rule_3_5_2_2: true
-debian9cis_rule_3_5_2_3: true
-debian9cis_rule_3_5_2_4: true
-debian9cis_rule_3_5_3: true
+debian9cis_rule_3_5_1_2: false 
+debian9cis_rule_3_5_1_3: false 
+debian9cis_rule_3_5_1_4: false 
+debian9cis_rule_3_5_2_1: false 
+debian9cis_rule_3_5_2_2: false 
+debian9cis_rule_3_5_2_3: false 
+debian9cis_rule_3_5_2_4: false 
+debian9cis_rule_3_5_3: false
 debian9cis_rule_3_6: true
 debian9cis_rule_3_7: true
 
