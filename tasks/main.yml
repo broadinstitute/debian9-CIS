@@ -22,10 +22,10 @@
       - prelim_tasks
       - always
 
-- include: section1.yml
-  become: true
-  when: debian9cis_section_1
-  tags: section1
+#- include: section1.yml
+#  become: true
+#  when: debian9cis_section_1
+#  tags: section1
 #
 #- include: section2.yml
 #  become: true
