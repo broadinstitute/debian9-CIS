@@ -107,12 +107,12 @@
     state: present
     dest: /etc/default/grub
     backrefs: yes
-    regexp: '^(GRUB_CMDLINE_LINUX=(?!.* audit)\"[^\"]+)(\".*)'
-    line: '\1 audit=1"\2'
+    regexp: '^GRUB_CMDLINE_LINUX='
+    line: 'GRUB_CMDLINE_LINUX="apparmor=1 security=apparmor ipv6.disable=1 audit=1"'
   when:
       - debian9cis_rule_4_1_3
   notify:
-      - restart auditd
+      - update grub
   tags:
       - level2
       - scored
