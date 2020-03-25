@@ -762,8 +762,8 @@
     state: present
     dest: /etc/default/grub
     backrefs: yes
-    regexp: '^(GRUB_CMDLINE_LINUX=(?!.* ipv6.disable)\"[^\"]+)(\".*)'
-    line: '\1 ipv6.disable=1"\2'
+    regexp: '^GRUB_CMDLINE_LINUX="(.*)"'
+    line: 'GRUB_CMDLINE_LINUX="\1 ipv6.disable=1"'
   when:
     - debian9cis_rule_3_7
   notify:

@@ -3,8 +3,6 @@
 - name: update grub
   become: true
   command: update-grub
-  when:
-    - grub
 
 - name: systemd restart tmp.mount
   become: true
