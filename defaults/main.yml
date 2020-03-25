@@ -288,7 +288,7 @@ debian9cis_rule_6_2_20: true
 #      - ansible_facts.services["postfix.service"] is defined
 #      - ansible_facts.services["rsync.service"] is defined
 #      - ansible_facts.services["nis.service"] is defined
-
+grub: false
 rsyslog: true
 syslog: false
 ip6tables_allow: true

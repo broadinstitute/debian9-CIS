@@ -625,6 +625,7 @@
   when:
     - not debian9cis_skip_for_docker
     - debian9cis_rule_1_6_2_1
+    - grub
   tags:
     - level2
     - scored
