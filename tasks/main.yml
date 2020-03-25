@@ -26,28 +26,28 @@
   become: true
   when: debian9cis_section_1
   tags: section1
-
-- include: section2.yml
-  become: true
-  when: debian9cis_section_2
-  tags: section2
+#
+#- include: section2.yml
+#  become: true
+#  when: debian9cis_section_2
+#  tags: section2
 
 - include: section3.yml
   become: true
   when: debian9cis_section_3
   tags: section3
 
-- include: section4.yml
-  become: true
-  when: debian9cis_section_4
-  tags: section4
-
-- include: section5.yml
-  become: true
-  when: debian9cis_section_5
-  tags: section5
-
-- include: section6.yml
-  become: true
-  when: debian9cis_section_6
-  tags: section6
+#- include: section4.yml
+#  become: true
+#  when: debian9cis_section_4
+#  tags: section4
+#
+#- include: section5.yml
+#  become: true
+#  when: debian9cis_section_5
+#  tags: section5
+#
+#- include: section6.yml
+#  become: true
+#  when: debian9cis_section_6
+#  tags: section6

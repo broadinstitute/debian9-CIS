@@ -763,7 +763,7 @@
     dest: /etc/default/grub
     backrefs: yes
     regexp: '^GRUB_CMDLINE_LINUX="(.*)"'
-    line: 'GRUB_CMDLINE_LINUX="\1 ipv6.disable=1"'
+    line: 'GRUB_CMDLINE_LINUX="apparmor=1 security=apparmor ipv6.disable=1"'
   when:
     - debian9cis_rule_3_7
   notify:
