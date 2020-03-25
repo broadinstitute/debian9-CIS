@@ -18,7 +18,7 @@ debian9cis_raspbian: false
 autofs_installed: true
 debian9cis_allow_autofs: false
 selinux: false
-
+grub: false
 # Section 2
 
 debian9cis_config_aide: true
@@ -154,7 +154,7 @@ debian9cis_rule_3_5_2_2: true
 debian9cis_rule_3_5_2_3: true
 debian9cis_rule_3_5_2_4: true
 debian9cis_rule_3_5_3: true
-debian9cis_rule_3_6: false
+debian9cis_rule_3_6: true
 debian9cis_rule_3_7: false
 
 debian9cis_rule_4_1_1_1: true
