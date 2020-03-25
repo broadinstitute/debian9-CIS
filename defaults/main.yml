@@ -127,15 +127,15 @@ debian9cis_rule_2_3_5: true
 
 debian9cis_rule_3_1_1: true
 debian9cis_rule_3_1_2: true
-debian9cis_rule_3_2_1: false
-debian9cis_rule_3_2_2: false
-debian9cis_rule_3_2_3: false
-debian9cis_rule_3_2_4: false
-debian9cis_rule_3_2_5: false
-debian9cis_rule_3_2_6: false
-debian9cis_rule_3_2_7: false
-debian9cis_rule_3_2_8: false
-debian9cis_rule_3_2_9: false
+debian9cis_rule_3_2_1: true
+debian9cis_rule_3_2_2: true
+debian9cis_rule_3_2_3: true
+debian9cis_rule_3_2_4: true
+debian9cis_rule_3_2_5: true
+debian9cis_rule_3_2_6: true
+debian9cis_rule_3_2_7: true
+debian9cis_rule_3_2_8: true
+debian9cis_rule_3_2_9: true
 debian9cis_rule_3_3_1: true
 debian9cis_rule_3_3_2: true
 debian9cis_rule_3_3_3: true
@@ -154,8 +154,8 @@ debian9cis_rule_3_5_2_2: true
 debian9cis_rule_3_5_2_3: true
 debian9cis_rule_3_5_2_4: true
 debian9cis_rule_3_5_3: true
-debian9cis_rule_3_6: true
-debian9cis_rule_3_7: true
+debian9cis_rule_3_6: false
+debian9cis_rule_3_7: false
 
 debian9cis_rule_4_1_1_1: true
 debian9cis_rule_4_1_1_2: true
