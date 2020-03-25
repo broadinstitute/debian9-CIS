@@ -328,7 +328,7 @@ debian9cis_shell:
 user_dir_mode: 750
 
 use_selinux: true
-debian9cis_setup_firewall: true
+debian9cis_setup_firewall: false
 disable_wireless: true
 
 debian9cis_hosts_allow:
