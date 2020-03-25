@@ -38,7 +38,7 @@ debian9cis_ignore_remount_errors: false
 prelim_tasks: true
 debian9cis_section_1: true
 debian9cis_section_2: true
-debian9cis_section_3: true
+debian9cis_section_3: false
 debian9cis_section_4: true
 debian9cis_section_5: true
 debian9cis_section_6: true
