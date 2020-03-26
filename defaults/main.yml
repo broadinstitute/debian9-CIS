@@ -136,8 +136,8 @@ debian9cis_rule_3_2_7: true
 debian9cis_rule_3_2_8: true
 debian9cis_rule_3_2_9: true
 debian9cis_rule_3_3_1: true
-debian9cis_rule_3_3_2: true
-debian9cis_rule_3_3_3: true
+debian9cis_rule_3_3_2: false
+debian9cis_rule_3_3_3: false
 debian9cis_rule_3_3_4: true
 debian9cis_rule_3_3_5: true
 debian9cis_rule_3_4_1: true
