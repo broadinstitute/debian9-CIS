@@ -49,7 +49,7 @@ debian9cis_rule_1_1_1_2: true
 debian9cis_rule_1_1_1_3: true
 debian9cis_rule_1_1_1_4: true
 debian9cis_rule_1_1_1_5: true
-debian9cis_rule_1_1_2: true
+debian9cis_rule_1_1_2: false
 debian9cis_rule_1_1_3: true
 debian9cis_rule_1_1_4: true
 debian9cis_rule_1_1_5: true
