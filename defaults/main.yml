@@ -8,7 +8,7 @@ remote_logging: false
 log_host: false
 deb9_audit_rules_template: true
 
-debian9cis_skip_for_docker: false
+debian9cis_skip_for_docker: true
 debian9cis_skip_for_travis: false
 debian9cis_chroot: false
 debian9cis_raspbian: false

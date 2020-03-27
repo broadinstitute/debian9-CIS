@@ -39,6 +39,7 @@
     flush: true
   when:
     - debian9cis_section_3
+    - not debian9cis_skip_for_docker
 
 - name: "PRELIM | Make sure rules directory exists | Section 3"
   file:
