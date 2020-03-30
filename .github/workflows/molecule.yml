@@ -17,13 +17,9 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v1
-        with:
-          python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          sudo apt install docker
+          sudo apt install -y docker
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Test with molecule
