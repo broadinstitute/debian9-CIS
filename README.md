@@ -2,6 +2,8 @@
 
 This role can be used in an Ansible playbook to harden Debian 9 images to CIS 1.0.1 standards.
 
+![Molecule Test](https://github.com/broadinstitute/dsp-appsec-debian9-hardening-role/workflows/Molecule%20Test/badge.svg)
+
 ## Set Up
 
 1. Make sure vagrant and virtualbox are installed.
