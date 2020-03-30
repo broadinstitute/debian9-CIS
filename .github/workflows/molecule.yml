@@ -1,0 +1,14 @@
+name: Run molecule tests
+# This workflow is triggered on pushes to the repository.
+on: [push]
+
+jobs:
+  build:
+    # Job name is Greeting
+    name: Greeting
+    # This job runs on Linux
+    runs-on: debian-stretch
+    steps:
+      # This step prints an output (time) from the previous step's action.
+      - name: Echo Hello World
+        run: echo 'hello world'

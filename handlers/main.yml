@@ -41,11 +41,13 @@
     state: restarted
     enabled: true
   when:
-    - not debian9cis_skip_for_travis
+    - not debian9cis_skip_for_docker
     - not debian9cis_chroot
 
 - name: reload rsyslogd
-  command: pkill -HUP rsyslogd
+  command: pkill -HUP rsyslogd  
+  when:
+    - not debian9cis_skip_for_docker
 
 - name: restart syslog-ng
   systemd:
@@ -55,6 +57,7 @@
     masked: false
   when:
     - ansible_facts.services["syslog-ng.service"] is defined
+    - not debian9cis_skip_for_docker
 
 - name: restart sshd
   systemd:
@@ -64,7 +67,4 @@
     masked: false
   when:
     - ansible_facts.services["sshd.service"] is defined
-
-- name: print ssh
-  debug:
-    msg: Printig {{ sshd_var.stdout }}
+    - not debian9cis_skip_for_docker

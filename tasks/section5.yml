@@ -5,7 +5,8 @@
       state: started
       enabled: true
   when:
-      - debian9cis_rule_5_1_1
+    - debian9cis_rule_5_1_1
+    - not debian9cis_skip_for_docker
   tags:
     - level1
     - scored
@@ -136,7 +137,8 @@
             group: root
             mode: og-rwx
   when:
-      - debian9cis_rule_5_1_8
+    - debian9cis_rule_5_1_8
+    - not debian9cis_skip_for_docker
   tags:
     - level1
     - scored
@@ -152,7 +154,8 @@
       group: root
       mode: og-rwx
   when:
-      - debian9cis_rule_5_2_1
+    - debian9cis_rule_5_2_1
+    - not debian9cis_skip_for_docker
   tags:
     - level1
     - scored
@@ -170,6 +173,7 @@
     
   when:
     - debian9cis_rule_5_2_2
+    - not debian9cis_skip_for_docker
   tags:
     - level1
     - scored
@@ -187,6 +191,7 @@
 
   when:
     - debian9cis_rule_5_2_3
+    - not debian9cis_skip_for_docker
   tags:
     - level1
     - scored
@@ -201,7 +206,8 @@
       line: 'Protocol 2'
       state: present
   when:
-      - debian9cis_rule_5_2_4
+    - debian9cis_rule_5_2_4
+    - not debian9cis_skip_for_docker
   notify:
     - restart sshd
   tags:
@@ -221,6 +227,7 @@
       state: present
   when:
       - debian9cis_rule_5_2_5
+      - not debian9cis_skip_for_docker
       - verbose_logs
   notify:
     - restart sshd
@@ -239,6 +246,7 @@
       state: present
   when:
       - debian9cis_rule_5_2_5
+      - not debian9cis_skip_for_docker
       - not verbose_logs
   notify:
     - restart sshd
@@ -256,7 +264,8 @@
       line: 'X11Forwarding no'
       state: present
   when:
-      - debian9cis_rule_5_2_6
+    - debian9cis_rule_5_2_6
+    - not debian9cis_skip_for_docker
   notify:
     - restart sshd
   tags:
@@ -274,7 +283,8 @@
       line: 'MaxAuthTries 4'
       state: present
   when:
-      - debian9cis_rule_5_2_7
+    - debian9cis_rule_5_2_7
+    - not debian9cis_skip_for_docker
   notify:
     - restart sshd
   tags:
@@ -291,7 +301,8 @@
       line: 'IgnoreRhosts yes'
       state: present
   when:
-      - debian9cis_rule_5_2_8
+    - debian9cis_rule_5_2_8
+    - not debian9cis_skip_for_docker
   notify:
     - restart sshd
   tags:
@@ -308,7 +319,8 @@
       line: 'HostbasedAuthentication no'
       state: present
   when:
-      - debian9cis_rule_5_2_9
+    - debian9cis_rule_5_2_9
+    - not debian9cis_skip_for_docker
   notify:
     - restart sshd
   tags:
@@ -325,7 +337,8 @@
       line: 'PermitRootLogin no'
       state: present
   when:
-      - debian9cis_rule_5_2_10
+    - debian9cis_rule_5_2_10
+    - not debian9cis_skip_for_docker
   notify:
     - restart sshd
   tags:
@@ -342,7 +355,8 @@
       line: 'PermitEmptyPasswords no'
       state: present
   when:
-      - debian9cis_rule_5_2_11
+    - debian9cis_rule_5_2_11
+    - not debian9cis_skip_for_docker
   notify:
     - restart sshd
   tags:
@@ -359,7 +373,8 @@
       line: 'PermitUserEnvironment no'
       state: present
   when:
-      - debian9cis_rule_5_2_12
+    - debian9cis_rule_5_2_12
+    - not debian9cis_skip_for_docker
   notify:
     - restart sshd
   tags:
@@ -395,7 +410,8 @@
       notify:
         - restart sshd
   when:
-      - debian9cis_rule_5_2_13
+    - debian9cis_rule_5_2_13
+    - not debian9cis_skip_for_docker
   tags:
     - level1
     - scored
@@ -433,7 +449,8 @@
       notify:
         - restart sshd
   when:
-      - debian9cis_rule_5_2_14
+    - debian9cis_rule_5_2_14
+    - not debian9cis_skip_for_docker
   tags:
     - level1
     - scored
@@ -460,7 +477,8 @@
       notify:
         - restart sshd
   when:
-      - debian9cis_rule_5_2_15
+    - debian9cis_rule_5_2_15
+    - not debian9cis_skip_for_docker
   tags:
     - level1
     - scored
@@ -488,7 +506,8 @@
       notify:
         - restart sshd
   when:
-      - debian9cis_rule_5_2_16
+    - debian9cis_rule_5_2_16
+    - not debian9cis_skip_for_docker
   tags:
     - level1
     - scored
@@ -503,7 +522,8 @@
       line: 'LoginGraceTime 60'
       state: present
   when:
-      - debian9cis_rule_5_2_17
+    - debian9cis_rule_5_2_17
+    - not debian9cis_skip_for_docker
   notify:
     - restart sshd
   tags:
@@ -551,7 +571,8 @@
       notify:
         - restart sshd
   when:
-      - debian9cis_rule_5_2_18
+    - debian9cis_rule_5_2_18
+    - not debian9cis_skip_for_docker
   tags:
     - level1
     - scored
@@ -566,7 +587,8 @@
     line: 'Banner /etc/issue.net'
     state: present
   when:
-      - debian9cis_rule_5_2_19
+    - debian9cis_rule_5_2_19
+    - not debian9cis_skip_for_docker
   notify:
     - restart sshd
   tags:
@@ -728,7 +750,8 @@
 - name: "SCORED | 5.4.1.4 | PATCH | Ensure inactive password lock is 30 days or less"
   command: useradd -D -f 30
   when:
-      - debian9cis_rule_5_4_1_4
+    - debian9cis_rule_5_4_1_4
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - scored
@@ -773,7 +796,8 @@
       with_items: "{{ sys_users.stdout.split('\n') }}"
 
   when:
-      - debian9cis_rule_5_4_2
+    - debian9cis_rule_5_4_2
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch
@@ -783,7 +807,8 @@
 - name: "SCORED | 5.4.3 | PATCH | Ensure default group for the root account is GID 0"
   command: usermod -g 0 root
   when:
-      - debian9cis_rule_5_4_3
+    - debian9cis_rule_5_4_3
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch

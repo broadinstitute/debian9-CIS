@@ -133,8 +133,9 @@
           - writable_files.stdout == ""
         fail_msg: "6.1.10: Writable files exist."
   when:
-      - debian9cis_rule_6_1_10
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_1_10
+    - fail_on_manual_remediation_actions
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch
@@ -153,8 +154,9 @@
           - unowned_files.stdout == ""
         fail_msg: "6.1.11: Unowned files exist"
   when:
-      - debian9cis_rule_6_1_11
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_1_11
+    - fail_on_manual_remediation_actions
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch
@@ -173,8 +175,9 @@
           - ungrouped_files.stdout == ""
         fail_msg: "6.1.12: Ungrouped files exist"
   when:
-      - debian9cis_rule_6_1_12
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_1_12
+    - fail_on_manual_remediation_actions
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch
@@ -233,8 +236,9 @@
           - no_passwords.stdout == ""
         fail_msg: "6.2.1: Users without passwords exist."
   when:
-      - debian9cis_rule_6_2_1
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_2_1
+    - fail_on_manual_remediation_actions
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch
@@ -304,8 +308,9 @@
           - zero_uids.stdout == "root"
         fail_msg: "6.2.5: Multiple users with uid 0 exist."
   when:
-      - debian9cis_rule_6_2_5
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_2_5
+    - fail_on_manual_remediation_actions
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch
@@ -342,8 +347,9 @@
         mode: 644
       with_items: "{{ mod_path.stdout.split() }}"
   when:
-      - debian9cis_rule_6_2_6
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_2_6
+    - fail_on_manual_remediation_actions
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch
@@ -372,10 +378,11 @@
         mode: user_dir_mode
       with_items: "{{ users.stdout.split(\"(?<!\\G\\S+)\\s\") }}"
   when:
-      - debian9cis_rule_6_2_7
-      - debian9cis_rule_6_2_8
-      - debian9cis_rule_6_2_9
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_2_7
+    - debian9cis_rule_6_2_8
+    - debian9cis_rule_6_2_9
+    - fail_on_manual_remediation_actions
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch
@@ -408,8 +415,9 @@
       failed_when: fileperm.stdout != "-"
       with_items: "{{ dotfiles.files }}"
   when:
-      - debian9cis_rule_6_2_10
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_2_10
+    - not debian9cis_skip_for_docker
+    - fail_on_manual_remediation_actions
   tags:
       - level1
       - patch
@@ -432,8 +440,9 @@
       with_items: "{{ users.stdout.split(\"(?<!\\G\\S+)\\s\") }}"
 
   when:
-      - debian9cis_rule_6_2_11
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_2_11
+    - fail_on_manual_remediation_actions
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch
@@ -457,8 +466,9 @@
       with_items: "{{ users.stdout.split(\"(?<!\\G\\S+)\\s\") }}"
       
   when:
-      - debian9cis_rule_6_2_12 or debian9cis_rule_6_2_13
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_2_12 or debian9cis_rule_6_2_13
+    - fail_on_manual_remediation_actions
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch
@@ -482,8 +492,9 @@
       with_items: "{{ users.stdout.split(\"(?<!\\G\\S+)\\s\") }}"
 
   when:
-      - debian9cis_rule_6_2_14
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_2_14
+    - fail_on_manual_remediation_actions
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch
@@ -507,8 +518,9 @@
       with_items: "{{ pw_groups.stdout }}"
 
   when:
-      - debian9cis_rule_6_2_15
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_2_15
+    - fail_on_manual_remediation_actions
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch
@@ -529,8 +541,9 @@
       with_items: "{{ uids.stdout.split('\n') }}"
 
   when:
-      - debian9cis_rule_6_2_16
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_2_16
+    - fail_on_manual_remediation_actions
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch
@@ -550,8 +563,9 @@
         fail_msg: "6.2.17: Duplicate instances of GID: {{ item.split()[1] }}"
       with_items: "{{ gids.stdout.split('\n') }}"
   when:
-      - debian9cis_rule_6_2_17
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_2_17
+    - fail_on_manual_remediation_actions
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch
@@ -572,8 +586,9 @@
       with_items: "{{ usernames.stdout.split('\n') }}"
 
   when:
-      - debian9cis_rule_6_2_18
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_2_18
+    - fail_on_manual_remediation_actions
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch
@@ -594,8 +609,9 @@
       with_items: "{{ usernames.stdout.split('\n') }}"
 
   when:
-      - debian9cis_rule_6_2_19
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_2_19
+    - fail_on_manual_remediation_actions
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch
@@ -623,8 +639,9 @@
           - user_gid.stdout == ""
 
   when:
-      - debian9cis_rule_6_2_20
-      - fail_on_manual_remediation_actions
+    - debian9cis_rule_6_2_20
+    - fail_on_manual_remediation_actions
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - patch

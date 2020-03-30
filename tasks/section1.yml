@@ -15,7 +15,7 @@
         state: absent
   when:
     - debian9cis_rule_1_1_1_1
-    - not debian9cis_skip_for_travis
+    - not debian9cis_skip_for_docker
     - not debian9cis_chroot
   tags:
     - level1
@@ -40,7 +40,7 @@
         state: absent
   when:
     - debian9cis_rule_1_1_1_2
-    - not debian9cis_skip_for_travis
+    - not debian9cis_skip_for_docker
     - not debian9cis_chroot
   tags:
     - level1
@@ -66,7 +66,7 @@
         state: absent
   when:
     - debian9cis_rule_1_1_1_3
-    - not debian9cis_skip_for_travis
+    - not debian9cis_skip_for_docker
     - not debian9cis_chroot
   tags:
     - level1
@@ -92,7 +92,7 @@
         state: absent
   when:
     - debian9cis_rule_1_1_1_4
-    - not debian9cis_skip_for_travis
+    - not debian9cis_skip_for_docker
     - not debian9cis_chroot
   tags:
     - level1
@@ -117,7 +117,7 @@
         state: absent
   when:
     - debian9cis_rule_1_1_1_5
-    - not debian9cis_skip_for_travis
+    - not debian9cis_skip_for_docker
   tags:
     - level1
     - scored
@@ -143,7 +143,7 @@
     - debian9cis_rule_1_1_3
     - debian9cis_rule_1_1_4
     - debian9cis_rule_1_1_5
-    - not debian9cis_skip_for_travis
+    - not debian9cis_skip_for_docker
   tags:
     - level1
     - level2
@@ -319,6 +319,7 @@
     executable: /bin/bash
   when:
     - debian9cis_rule_1_1_21
+    - not debian9cis_skip_for_docker
   tags:
     - level1
     - scored
@@ -393,7 +394,7 @@
     - debian9cis_config_aide
     - debian9cis_rule_1_3_1
     - not aide_db.stat.exists
-    - not debian9cis_skip_for_travis
+    - not debian9cis_skip_for_docker
   tags:
     - level1
     - scored

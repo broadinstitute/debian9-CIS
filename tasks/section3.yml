@@ -17,6 +17,7 @@
         sysctl_set: true
   when:
     - debian9cis_rule_3_1_1
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - scored
@@ -42,6 +43,7 @@
         sysctl_set: true
   when:
     - debian9cis_rule_3_1_2
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - scored
@@ -77,6 +79,7 @@
         sysctl_set: true
   when:
     - debian9cis_rule_3_2_1
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - scored
@@ -116,6 +119,7 @@
         sysctl_set: true
   when:
     - debian9cis_rule_3_2_2
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - scored
@@ -141,6 +145,7 @@
         sysctl_set: true
   when:
     - debian9cis_rule_3_2_3
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - scored
@@ -166,6 +171,7 @@
         sysctl_set: true
   when:
     - debian9cis_rule_3_2_4
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - scored
@@ -182,6 +188,7 @@
     sysctl_set: true
   when:
     - debian9cis_rule_3_2_5
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - scored
@@ -198,6 +205,7 @@
     sysctl_set: true
   when:
     - debian9cis_rule_3_2_6
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - scored
@@ -223,6 +231,7 @@
         sysctl_set: true
   when:
     - debian9cis_rule_3_2_7
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - scored
@@ -239,6 +248,7 @@
     sysctl_set: true
   when:
     - debian9cis_rule_3_2_8
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - scored
@@ -264,6 +274,7 @@
         sysctl_set: true
   when:
     - debian9cis_rule_3_2_9
+    - not debian9cis_skip_for_docker
   tags:
       - level1
       - scored
