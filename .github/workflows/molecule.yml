@@ -1,20 +1,30 @@
-name: Greet Everyone
-# This workflow is triggered on pushes to the repository.
+---
+name: Molecule Test
+
 on: [push]
 
 jobs:
   build:
-    # Job name is Greeting
-    name: Greeting
-    # This job runs on Linux
+
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.5, 3.6, 3.7]
+
     steps:
-      # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
-      - name: Hello world
-        uses: actions/hello-world-javascript-action@v1
+      - uses: actions/checkout@v1
         with:
-          who-to-greet: 'Mona the Octocat'
-        id: hello
-      # This step prints an output (time) from the previous step's action.
-      - name: Echo the greeting's time
-        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
+          path: molecule_demo
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          sudo apt install docker
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Test with molecule
+        run: |
+          molecule test
